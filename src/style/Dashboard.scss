@@ -1,0 +1,298 @@
+/* Dashboard CSS Styles */
+:root {
+    --primary-color: #2563eb;
+    --secondary-color: #1e40af;
+    --accent-color: #f59e0b;
+    --success-color: #10b981;
+    --danger-color: #ef4444;
+    --warning-color: #f59e0b;
+    --dark-bg: #0f172a;
+    --card-bg: #1e293b;
+    --sidebar-bg: #334155;
+    --text-primary: #f1f5f9;
+    --text-secondary: #94a3b8;
+    --border-color: #475569;
+}
+
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, #1a202c 100%);
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+.map-container {
+    height: 500px;
+    border-radius: 12px;
+}
+
+/* Risk Markers */
+.risk-marker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.marker-pin {
+    width: 30px;
+    height: 30px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    position: relative;
+}
+
+.marker-pin::after {
+    content: "";
+    width: 24px;
+    height: 24px;
+    margin: 3px 0 0 3px;
+    background: white;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.red-pin {
+    background: #ef4444;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.7);
+}
+
+.orange-pin {
+    background: #f59e0b;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.7);
+}
+
+.green-pin {
+    background: #10b981;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.7);
+}
+
+.risk-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.risk-badge.high {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.risk-badge.medium {
+    background-color: rgba(234, 179, 8, 0.2);
+    color: #eab308;
+}
+
+.risk-badge.low {
+    background-color: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+}
+
+/* Recommendation Item */
+.recommendation-item {
+    padding: 8px 12px;
+    background-color: rgba(59, 130, 246, 0.1);
+    border-left: 3px solid var(--primary-color);
+    margin-bottom: 8px;
+    border-radius: 0 4px 4px 0;
+    transition: all 0.2s ease;
+}
+
+.recommendation-item:hover {
+    background-color: rgba(59, 130, 246, 0.2);
+    transform: translateX(3px);
+}
+
+/* Resource Marker Styles */
+.resource-marker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.resource-pin {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: transparent;
+    position: relative;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+/* Specific marker types */
+.patrol-pin {
+    background: var(--primary-color);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
+}
+
+.cctv-pin {
+    background: var(--success-color);
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.7);
+}
+
+.lighting-pin {
+    background: var(--warning-color);
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.7);
+}
+
+.checkpoint-pin {
+    background: var(--danger-color);
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.7);
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+
+    70% {
+        transform: scale(1.2);
+        box-shadow: 0 0 0 12px rgba(255, 255, 255, 0);
+    }
+
+    100% {
+        transform: scale(0.8);
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+    }
+}
+
+/* Select Inputs */
+select {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 8px;
+    width: 100%;
+    transition: border-color 0.2s ease;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.progress-bar {
+    height: 4px;
+    background-color: #e2e8f0;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #3b82f6;
+    transition: width 0.3s ease;
+}
+
+.pulse-alert {
+    animation: pulse-alert 2s infinite;
+}
+
+@keyframes pulse-alert {
+    0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
+.direction-badge {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.direction-badge.north {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.direction-badge.south {
+    background-color: #10b981;
+    color: white;
+}
+
+.direction-badge.west {
+    background-color: #f59e0b;
+    color: white;
+}
+
+.direction-badge.east {
+    background-color: #ef4444;
+    color: white;
+}
+
+.pulse-marker .pulse-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(59, 130, 246, 0.7);
+    box-shadow: 0 0 0 rgba(59, 130, 246, 0.7);
+    animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .map-container {
+        height: 400px;
+    }
+
+    .recommendation-item {
+        padding: 6px 8px;
+    }
+
+    select {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 640px) {
+    .map-container {
+        height: 350px;
+    }
+
+    .marker-pin {
+        width: 24px;
+        height: 24px;
+    }
+
+    .marker-pin::after {
+        width: 18px;
+        height: 18px;
+        margin: 3px 0 0 3px;
+    }
+}
